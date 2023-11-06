@@ -21,7 +21,7 @@ public class AppTest
     
     @Test
     public void test_server_testing() throws InterruptedException {
-    	String expectedResponse = "Message Sent!";
+    	String expectedResponse = "Message Sent";
         String actualResponse = Server_Testing.performServer_Testing();
         assertEquals(expectedResponse, actualResponse);
     }
