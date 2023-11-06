@@ -12,7 +12,7 @@
     command: sudo systemctl start docker
   
   - name: Check if the container is running
-    shell: sudo docker ps --format "{{.Names}}" | grep 'insure-me'
+    shell: sudo docker ps --filter name=insure-me --format "{{.Names}}"
     register: container_check
     ignore_errors: true  
 
