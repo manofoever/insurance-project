@@ -11,18 +11,13 @@
   - name: start docker service
     command: sudo systemctl start docker
   
-  - name: Check if the container is running
-    command: sudo docker ps --format "{{.Names}}" | grep 'insure-me'
-    register: container_check
-    ignore_errors: true
-  
   - name: stop docker container named insure-me
     command: sudo docker stop insure-me
-    when: container_check.stdout != ''
+    ignore_errors : true
 
   - name: remove docker container named insure-me
     command: sudo docker rm insure-me
-    when: container_check.stdout != ''
+    ignore_errors : true
 
   - name: deploy insureme application
     command: sudo docker run -itd -p 8082:8081 manofoever/insurance-project:1.0
